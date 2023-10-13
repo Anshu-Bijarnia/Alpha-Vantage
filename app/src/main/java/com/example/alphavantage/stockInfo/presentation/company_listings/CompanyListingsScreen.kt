@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.alphavantage.stockInfo.presentation.destinations.CompanyInfoScreenDestination
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.ramcosta.composedestinations.annotation.Destination
@@ -59,7 +60,10 @@ fun CompanyListingsScreen(
                     CompanyItem(company = company,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickable { //Todo: Navigate to detail screen
+                            .clickable {
+                                navigator.navigate(
+                                    CompanyInfoScreenDestination(company.symbol)
+                                )
                             }
                             .padding(16.dp)
                     )

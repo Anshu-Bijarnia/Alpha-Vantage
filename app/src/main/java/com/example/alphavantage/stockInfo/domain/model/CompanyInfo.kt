@@ -1,11 +1,9 @@
 package com.example.alphavantage.stockInfo.domain.model
 
-import com.squareup.moshi.Json
-
 data class CompanyInfo(
-    @field:Json(name = "Symbol") val symbol: String,
-    @field:Json(name = "Name") val name: String,
-    @field:Json(name = "Description") val description: String,
-    @field:Json(name = "Country") val country: String,
-    @field:Json(name = "Industry") val industry: String
+    val symbol: String,
+    val name: String,
+    val description: String,
+    val country: String,
+    val industry: String
 )
