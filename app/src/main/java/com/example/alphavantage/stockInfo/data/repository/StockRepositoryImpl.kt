@@ -10,7 +10,7 @@ import com.example.alphavantage.stockInfo.domain.model.CompanyInfo
 import com.example.alphavantage.stockInfo.domain.model.CompanyListing
 import com.example.alphavantage.stockInfo.domain.model.IntradayInfo
 import com.example.alphavantage.stockInfo.domain.repository.StockRepository
-import com.example.alphavantage.stockInfo.util.Resource
+import com.example.alphavantage.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
@@ -34,9 +34,10 @@ class StockRepositoryImpl @Inject constructor(
         return flow {
             emit(Resource.Loading(true))
             val localListings = dao.searchCompanyListing(query)
-            emit(Resource.Success(
-                data = localListings.map { it.toCompanyListing() }
-            ))
+            emit(
+                Resource.Success(
+                    data = localListings.map { it.toCompanyListing() }
+                ))
 
             val isDbEmpty = localListings.isEmpty() && query.isBlank()
             val shouldJustLoadFromCache = !isDbEmpty && !fetchFromRemote

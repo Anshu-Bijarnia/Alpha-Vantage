@@ -79,11 +79,11 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.5.3")
     implementation("androidx.activity:activity-compose:1.8.0")
     implementation("com.google.accompanist:accompanist-swiperefresh:0.24.2-alpha")
+    implementation("androidx.compose.material:material:1.5.4")
 
     // Compose nav destination
-    implementation("io.github.raamcosta.compose-destinations:core:1.9.54")
+    implementation("io.github.raamcosta.compose-destinations:animations-core:1.9.54")
     ksp("io.github.raamcosta.compose-destinations:ksp:1.9.54")
-
 
     //Dagger hilt
     implementation("com.google.dagger:hilt-android:2.44")
