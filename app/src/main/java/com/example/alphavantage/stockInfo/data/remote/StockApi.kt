@@ -1,6 +1,7 @@
 package com.example.alphavantage.stockInfo.data.remote
 
 import com.example.alphavantage.stockInfo.data.remote.dto.CompanyInfoDto
+import com.example.alphavantage.util.Constants.API_KEY
 import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -22,9 +23,4 @@ interface StockApi {
         @Query("symbol") symbol: String,
         @Query("apikey") apiKey: String = API_KEY
     ): CompanyInfoDto
-
-    companion object {
-        const val API_KEY = "LTCT0VS0Q9YMOL85"
-        const val BASE_URL = "https://alphavantage.co"
-    }
 }

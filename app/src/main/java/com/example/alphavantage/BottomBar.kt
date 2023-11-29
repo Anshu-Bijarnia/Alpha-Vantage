@@ -5,6 +5,7 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavOptionsBuilder
 import com.example.alphavantage.destinations.TypedDestination
@@ -29,7 +30,7 @@ fun BottomBar(
                     })
                 },
                 icon = { Icon(destination.icon, contentDescription = destination.label) },
-                label = { Text(destination.label) },
+                label = { Text(destination.label, fontSize = 10.sp) },
             )
         }
     }

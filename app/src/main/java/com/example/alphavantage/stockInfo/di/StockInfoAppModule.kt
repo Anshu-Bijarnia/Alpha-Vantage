@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.alphavantage.stockInfo.data.local.StockDatabase
 import com.example.alphavantage.stockInfo.data.remote.StockApi
-import com.example.alphavantage.stockInfo.data.remote.StockApi.Companion.BASE_URL
+import com.example.alphavantage.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +16,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object StockInfoAppModule {
 
     @Provides
     @Singleton
