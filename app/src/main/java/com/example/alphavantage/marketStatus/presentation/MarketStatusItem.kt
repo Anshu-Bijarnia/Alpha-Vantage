@@ -4,10 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -32,13 +31,13 @@ fun MarketStatusItem(
 ) {
     var expanded by remember { mutableStateOf(expand) }
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
+        modifier = modifier
+            .width(200.dp)
+            .padding(4.dp)
             .clip(RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.primary)
             .clickable { expanded = !expanded }
-            .padding(8.dp),
+            .padding(4.dp),
         elevation = CardDefaults.cardElevation(8.dp)
     ) {
         Column(modifier = Modifier.padding(10.dp)) {
@@ -47,14 +46,12 @@ fun MarketStatusItem(
                 text = status.currentStatus,
                 color = if (isClosed(status)) Color.Red else Color.Green
             )
-            LazyRow {
-                items(pExchanges(status).size) { i ->
-                    Text(text = pExchanges(status)[i])
-                    Spacer(modifier = Modifier.width(5.dp))
-                }
-            }
             if (expanded) {
-                Text(text = status.notes)
+                Text(text = "Regions: ${status.primaryExchange}")
+                if (status.notes.isNotEmpty()) {
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(text = "Notes: ${status.notes}")
+                }
             }
         }
     }
@@ -65,8 +62,4 @@ fun isClosed(status: MarketStatus): Boolean {
         return true
     }
     return false
-}
-
-fun pExchanges(status: MarketStatus): List<String> {
-    return status.primaryExchange.split(", ").map { it.trim() }
 }
